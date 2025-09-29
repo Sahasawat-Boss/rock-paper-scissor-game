@@ -29,6 +29,6 @@ optionImages.forEach((image, index) => {
         console.log(randomNumber);
         
         let botImage = ["images/paper.png", "images/rock.png", "images/scissors.png"];
-        cpuResult.src = botImage[randomNumber];
+        botResult.src = botImage[randomNumber];
     });
 });
