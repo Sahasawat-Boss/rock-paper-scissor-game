@@ -26,9 +26,37 @@ optionImages.forEach((image, index) => {
 
         // Generate a random number between 0 and 2
         let randomNumber = Math.floor(Math.random() * 3);
-        console.log(randomNumber);
-        
-        let botImage = ["images/paper.png", "images/rock.png", "images/scissors.png"];
+        // console.log(randomNumber);
+
+        let botImage = ["images/rock.png", "images/paper.png", "images/scissors.png"];
         botResult.src = botImage[randomNumber];
+
+        // Assign a letter value to the bot option (R for Rock, P for paper, S for Scissors)
+        let botValue = ["R", "P", "S"][randomNumber];
+        // Assign a letter value to the clicked oRtion (based on index)
+        let userValue = ["R", "P", "S"][index];
+
+        console.log(botValue, userValue)
+
+        // Create an object with all possible outcomes
+        const outcomes = {
+            RR: "Draw",
+            RP: "Bot",     // Paper ชนะ Rock
+            RS: "User",    // Rock ชนะ Scissors
+            PP: "Draw",
+            PR: "User",    // Paper ชนะ Rock
+            PS: "Bot",     // Scissors ชนะ Paper
+            SS: "Draw",
+            SR: "Bot",     // Rock ชนะ Scissors
+            SP: "User",    // Scissors ชนะ Paper
+        };
+
+        // Look up the outcome value based on user and bot options
+        let outComeValue = outcomes[userValue + botValue];
+
+        // Display result
+        result.textContent = userValue === botValue ? "Match Draw" : `${outComeValue} Won !!`
+        console.log(outComeValue);
+
     });
 });
